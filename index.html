@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>甲蟲增肌減脂營</title>
+    <!-- 引入Google Fonts的Noto Sans字體 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
     <style>
         body {
             display: flex;
@@ -11,28 +13,60 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* 背景顏色，可根據需要調整 */
+        }
+        h1 {
+            font-size: 2.5rem; /* 增加標題的字體大小 */
+            margin-bottom: 20px;
+            text-align: center;
         }
         form {
-            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
             text-align: center;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 20px;
+            width: 80%; /* 擴大表單寬度，使其佔據更多空間 */
         }
         .column-header {
-            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
-            text-align: center;
             font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 1.5rem; /* 增加標題字體大小 */
+            text-align: center;
+            margin-bottom: 20px;
         }
         .column {
-            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-size: 1.2rem; /* 增加文字的字體大小 */
         }
         label {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 80%; /* 增加輸入框的寬度 */
+            margin-bottom: 10px;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50; /* 按鈕背景顏色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049; /* 按鈕懸停時顏色變化 */
+        }
+        #result {
+            font-size: 1.5rem;
+            margin-top: 20px;
         }
     </style>
 </head>
