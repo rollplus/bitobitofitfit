@@ -26,22 +26,23 @@
             text-align: left;
         }
         form {
-            text-align: left;
+            text-align: center; /* 表單內項目置中 */
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             width: 50%; /* 調整表單寬度 */
+            margin: 0 auto; /* 表單置中 */
         }
         .column-header {
             font-weight: bold;
-            font-size: 2rem; /* 調整標題字體大小 */
-            text-align: left;
+            font-size: 2.5rem; /* 調整標題字體大小，略大於項目 */
+            text-align: center;
             margin-bottom: 20px;
         }
         .column {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             font-size: 2rem; /* 調整項目文字大小 */
             font-weight: bold; /* 使用粗體 */
         }
@@ -53,20 +54,21 @@
             font-size: 2rem; /* 調整輸入框字體大小 */
             width: 80px; /* 調整寬度以適應兩位數字 */
             margin-bottom: 10px;
+            text-align: center; /* 使輸入框文字置中 */
         }
         button {
             font-size: 2rem; /* 調整按鈕字體大小 */
             padding: 10px 20px;
             cursor: pointer;
-            background-color: #4CAF50; /* 按鈕背景顏色 */
-            color: white;
+            background-color: #FFFFFF; /* 按鈕背景顏色：白色 */
+            color: #000000; /* 按鈕文字顏色：黑色 */
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
             margin-top: 20px;
         }
         button:hover {
-            background-color: #45a049; /* 按鈕懸停時顏色變化 */
+            background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
         }
         #result {
             font-size: 2rem;
@@ -75,7 +77,7 @@
     </style>
 </head>
 <body>
-    <h1>請輸入數據</h1>
+    <h1>得分計算機</h1>
     <form id="scoreForm">
         <div class="column-header">Before</div>
         <div class="column-header">After</div>
