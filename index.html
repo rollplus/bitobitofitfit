@@ -15,14 +15,13 @@
             padding: 0;
             height: 100vh;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
             flex-direction: column;
+            align-items: center;
             padding: 20px;
         }
         h1 {
             font-size: 10rem; /* 將標題字體放大五倍 */
-            margin: 0 0 10px 0; /* 頂部距離調整 */
+            margin: 0 0 20px 0; /* 頂部距離調整 */
             text-align: left;
         }
         hr {
@@ -32,23 +31,18 @@
             margin-bottom: 20px;
         }
         .divider-b {
-            border-top: 2px solid #FFFFFF; /* 分隔線B顏色：白色 */
+            border-left: 2px solid #FFFFFF; /* 垂直分隔線B顏色：白色 */
+            height: 80vh;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+        .container {
+            display: flex;
             width: 100%;
-            margin: 20px 0;
-        }
-        form {
-            text-align: center; /* 表單內項目置中 */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            width: 100%; /* 調整表單寬度 */
-            margin: 0 auto; /* 表單置中 */
-        }
-        .column-header {
-            font-weight: bold;
-            font-size: 3rem; /* 調整標題字體大小，略大於項目 */
-            text-align: center;
-            margin-bottom: 20px;
+            height: calc(100vh - 120px); /* 調整高度以適應分隔線 */
+            position: relative;
         }
         .column {
             display: flex;
@@ -56,6 +50,14 @@
             align-items: center;
             font-size: 2rem; /* 調整項目文字大小 */
             font-weight: bold; /* 使用粗體 */
+            width: 50%;
+            padding: 20px;
+        }
+        .column-header {
+            font-weight: bold;
+            font-size: 3rem; /* 調整標題字體大小，略大於項目 */
+            text-align: center;
+            margin-bottom: 20px;
         }
         label {
             margin-bottom: 5px;
@@ -76,7 +78,6 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
             position: absolute;
             right: 20px;
             bottom: 20px;
@@ -93,38 +94,27 @@
 <body>
     <h1>甲蟲增肌減脂大賽</h1>
     <hr> <!-- 分隔線A -->
-    <form id="scoreForm">
-        <div class="column-header">Before</div>
-        <div class="column-header">After</div>
-        <div class="divider-b"></div> <!-- 分隔線B -->
+    <div class="container">
+        <div class="divider-b"></div> <!-- 垂直分隔線B -->
         <div class="column">
+            <div class="column-header">Before</div>
             <label for="previousWeight">體重(kg)</label>
             <input type="number" id="previousWeight" required>
-        </div>
-        <div class="column">
-            <label for="currentWeight">體重(kg)</label>
-            <input type="number" id="currentWeight" required>
-        </div>
-
-        <div class="column">
             <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
             <input type="number" id="previousMuscleMass" required>
-        </div>
-        <div class="column">
-            <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
-            <input type="number" id="currentMuscleMass" required>
-        </div>
-
-        <div class="column">
             <label for="previousBodyFatPercentage">體脂肪率(%)</label>
             <input type="number" id="previousBodyFatPercentage" required>
         </div>
         <div class="column">
+            <div class="column-header">After</div>
+            <label for="currentWeight">體重(kg)</label>
+            <input type="number" id="currentWeight" required>
+            <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
+            <input type="number" id="currentMuscleMass" required>
             <label for="currentBodyFatPercentage">體脂肪率(%)</label>
             <input type="number" id="currentBodyFatPercentage" required>
         </div>
-    </form>
-
+    </div>
     <button type="submit" form="scoreForm">填好了！</button>
     <div id="result"></div>
 
