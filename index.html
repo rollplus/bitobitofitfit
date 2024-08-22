@@ -1,21 +1,195 @@
-.score-button-container {
-    position: absolute;
-    bottom: 20px; /* 距離底部邊距 */
-    right: 20px;  /* 距離右側邊距 */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* 保持按鈕在容器的右下角 */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甲蟲增肌減脂大賽</title>
+    <!-- 引入Google Fonts的Noto Sans字體 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
+    <style>
+        body {
+            background-color: #000000; /* 背景顏色：黑色 */
+            color: #FFFFFF; /* 文字顏色：白色 */
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* 避免滾動條 */
+        }
+        h1 {
+            font-size: 10rem; /* 標題字體大小 */
+            margin: 0;
+            padding-left: 20px; /* 左邊距 */
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 10px); /* 減去上面邊距 */
+            position: relative;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        .form-container .left, .form-container .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* 靠上對齊 */
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container .left {
+            border-right: 2px solid #FFFFFF; /* B分隔線 */
+            position: relative;
+        }
+        .form-container .right {
+            position: relative;
+        }
+        .column-header {
+            font-weight: bold;
+            font-size: 5rem; /* "Before"和"After"字體大小 */
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 靠左對齊 */
+            font-size: 2rem; /* 項目文字大小 */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            font-size: 2rem; /* 輸入框字體大小 */
+            width: 80px; /* 寬度 */
+            text-align: center; /* 使輸入框文字置中 */
+            margin-bottom: 10px;
+        }
+        button {
+            font-size: 2rem; /* 按鈕字體大小 */
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #FFFFFF; /* 按鈕背景顏色 */
+            color: #000000; /* 按鈕文字顏色 */
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
+        }
+        #result {
+            font-size: 6rem; /* 放大分數 */
+            color: #FFFFFF; /* 文字顏色 */
+            position: fixed; /* 固定定位 */
+            bottom: 20px; /* 距離底部邊距 */
+            right: 20px; /* 距離右側邊距 */
+            margin: 0;
+        }
+        .score-button-container {
+            position: absolute;
+            bottom: 20px; /* 距離底部邊距 */
+            right: 20px;  /* 距離右側邊距 */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* 保持按鈕在容器的右下角 */
+        }
+        .score-button-container button {
+            display: block;
+            margin-bottom: 10px; /* 按鈕和分數之間的距離 */
+        }
+        .separator-A {
+            border-top: 2px solid #FFFFFF;
+            width: 100%;
+            position: relative;
+            top: 0px; /* 距離標題下方的邊距 */
+        }
+        .separator-B {
+            border-left: 2px solid #FFFFFF;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: calc(100% - 10px); /* 確保垂直線在水平線下方 */
+        }
+    </style>
+</head>
+<body>
+    <h1>甲蟲增肌減脂大賽</h1>
+    <div class="separator-A"></div>
+    <div class="container">
+        <div class="form-container">
+            <div class="left">
+                <div class="column-header">Before</div>
+                <div class="column">
+                    <label for="previousWeight">體重(kg)</label>
+                    <input type="number" id="previousWeight" required>
+                </div>
+                <div class="column">
+                    <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
+                    <input type="number" id="previousMuscleMass" required>
+                </div>
+                <div class="column">
+                    <label for="previousBodyFatPercentage">體脂肪率(%)</label>
+                    <input type="number" id="previousBodyFatPercentage" required>
+                </div>
+            </div>
+            <div class="right">
+                <div class="column-header">After</div>
+                <div class="column">
+                    <label for="currentWeight">體重(kg)</label>
+                    <input type="number" id="currentWeight" required>
+                </div>
+                <div class="column">
+                    <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
+                    <input type="number" id="currentMuscleMass" required>
+                </div>
+                <div class="column">
+                    <label for="currentBodyFatPercentage">體脂肪率(%)</label>
+                    <input type="number" id="currentBodyFatPercentage" required>
+                </div>
+            </div>
+            <div class="separator-B"></div>
+        </div>
+        <div class="score-button-container">
+            <button type="button" id="submitButton">填好了！</button>
+        </div>
+        <div id="result">Score:</div> <!-- 分數顯示在右下角 -->
+    </div>
 
-.score-button-container button {
-    display: block;
-    margin-bottom: 10px; /* 按鈕和分數之間的距離 */
-}
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function () {
+            const previousMuscleMass = parseFloat(document.getElementById("previousMuscleMass").value);
+            const previousWeight = parseFloat(document.getElementById("previousWeight").value);
+            const previousBodyFatPercentage = parseFloat(document.getElementById("previousBodyFatPercentage").value);
+            const currentMuscleMass = parseFloat(document.getElementById("currentMuscleMass").value);
+            const currentWeight = parseFloat(document.getElementById("currentWeight").value);
+            const currentBodyFatPercentage = parseFloat(document.getElementById("currentBodyFatPercentage").value);
 
-#result {
-    font-size: 6rem; /* 放大分數 */
-    color: #FFFFFF; /* 文字顏色 */
-    position: absolute;
-    bottom: 20px; /* 距離底部邊距 */
-    right: 20px;  /* 距離右側邊距 */
-}
+            // 計算變化和分數
+            const muscleMassChange = currentMuscleMass - previousMuscleMass;
+            const weightChange = currentWeight - previousWeight;
+            const bodyFatPercentageChange = currentBodyFatPercentage - previousBodyFatPercentage;
+            const score = muscleMassChange * 0.3 - weightChange * 0.3 - bodyFatPercentageChange * 0.5;
+
+            // 顯示結果
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = `Score: ${score.toFixed(2)}`; // 顯示到小數點後兩位
+        });
+    </script>
+</body>
+</html>
