@@ -77,6 +77,7 @@
             width: 120px; /* 寬度增加 */
             text-align: center; /* 使輸入框文字置中 */
             margin-bottom: 10px;
+            step: 0.01; /* 小數點後兩位 */
         }
         button {
             font-size: 2rem; /* 按鈕字體大小 */
@@ -92,23 +93,24 @@
             background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
         }
         #result {
-            font-size: 6rem; /* 調整分數字體大小 */
-            margin: 0;
-            position: absolute;
+            font-size: 6rem; /* 放大分數 */
+            color: #FFFFFF; /* 文字顏色 */
+            position: fixed; /* 固定定位 */
             bottom: 20px; /* 距離底部邊距 */
-            right: 20px; /* 距離右邊邊距 */
+            left: 20px; /* 距離左側邊距 */
+            margin: 0;
         }
         .score-button-container {
-            position: absolute;
-            top: 20px; /* 距離頂部邊距 */
-            right: 20px;
+            position: fixed;
+            bottom: 20px; /* 距離底部邊距 */
+            right: 20px; /* 距離右側邊距 */
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-end; /* 按鈕在右下角 */
         }
         .score-button-container button {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* 按鈕和分數之間的距離 */
         }
         .separator-A {
             border-top: 2px solid #FFFFFF;
@@ -166,7 +168,7 @@
         </div>
         <div class="score-button-container">
             <button type="button" id="submitButton">填好了！</button>
-            <div id="result" class="score">Score:</div>
+            <div id="result">Score:</div> <!-- 分數顯示在右下角 -->
         </div>
     </div>
 
