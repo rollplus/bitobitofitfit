@@ -16,58 +16,42 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 20px;
             box-sizing: border-box;
         }
         h1 {
-            font-size: 4rem; /* 調整標題字體大小 */
-            margin: 0;
+            font-size: 10rem; /* 將標題字體放大五倍 */
+            margin: 0 0 20px 0; /* 頂部距離調整 */
             text-align: left;
-            width: 100%; /* 確保標題靠左對齊 */
-            position: absolute;
-            top: 20px;
-            left: 20px;
         }
-        .separator-a {
-            border-top: 1px solid #FFFFFF;
-            width: 100%;
-            position: absolute;
-            top: 100px; /* 調整A線的位置 */
+        .divider-a {
+            border-top: 2px solid #FFFFFF;
+            margin: 20px 0;
         }
-        .separator-b {
-            border-left: 1px solid #FFFFFF;
-            height: calc(100vh - 160px); /* 高度為畫面高度減去上下間隔 */
+        .divider-b {
+            border-left: 2px solid #FFFFFF;
+            height: calc(100vh - 100px); /* 計算剩餘高度以適應頁面 */
             position: absolute;
-            top: 120px; /* 確保B線位於A線下方 */
             left: 50%;
+            top: 100px; /* 避免覆蓋分隔線A */
             transform: translateX(-50%);
         }
         .container {
             display: flex;
-            width: 80%;
-            height: calc(100vh - 160px); /* 高度為畫面高度減去A線和B線的間隔 */
+            align-items: flex-start;
+            justify-content: space-between;
+            height: calc(100vh - 150px); /* 留出上方和下方空間 */
             position: relative;
         }
-        .left, .right {
-            flex: 1;
+        .left-column, .right-column {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .left {
-            padding-right: 20px; /* 調整左右內邊距 */
-        }
-        .right {
-            padding-left: 20px; /* 調整左右內邊距 */
+            width: 50%;
+            padding: 0 20px;
         }
         .column-header {
             font-weight: bold;
-            font-size: 4rem; /* 改為現在兩倍大 */
-            text-align: left;
+            font-size: 2rem; /* 調整標題字體大小，略大於項目 */
             margin-bottom: 20px;
         }
         .column {
@@ -76,7 +60,6 @@
             align-items: flex-start;
             font-size: 2rem; /* 調整項目文字大小 */
             font-weight: bold; /* 使用粗體 */
-            margin-bottom: 20px;
         }
         label {
             margin-bottom: 5px;
@@ -89,7 +72,7 @@
             text-align: center; /* 使輸入框文字置中 */
         }
         button {
-            font-size: 1.5rem; /* 調整按鈕字體大小 */
+            font-size: 2rem; /* 調整按鈕字體大小 */
             padding: 10px 20px;
             cursor: pointer;
             background-color: #FFFFFF; /* 按鈕背景顏色：白色 */
@@ -98,7 +81,7 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             position: absolute;
-            bottom: 20px; /* 放置於畫面右下角 */
+            top: 20px;
             right: 20px;
         }
         button:hover {
@@ -107,17 +90,16 @@
         #result {
             font-size: 2rem;
             position: absolute;
-            bottom: 20px; /* 放置於畫面右下角 */
+            top: 70px;
             right: 20px;
         }
     </style>
 </head>
 <body>
     <h1>甲蟲增肌減脂大賽</h1>
-    <div class="separator-a"></div>
-    <div class="separator-b"></div>
+    <div class="divider-a"></div>
     <div class="container">
-        <div class="left">
+        <div class="left-column">
             <div class="column-header">Before</div>
             <div class="column">
                 <label for="previousWeight">體重(kg)</label>
@@ -132,7 +114,8 @@
                 <input type="number" id="previousBodyFatPercentage" required>
             </div>
         </div>
-        <div class="right">
+        <div class="divider-b"></div>
+        <div class="right-column">
             <div class="column-header">After</div>
             <div class="column">
                 <label for="currentWeight">體重(kg)</label>
@@ -149,8 +132,7 @@
         </div>
     </div>
     <button type="submit" form="scoreForm">填好了！</button>
-    <div id="result">您的分數是：</div>
-
+    <div id="result">您的分數是：0</div>
     <script>
         document.getElementById("scoreForm").addEventListener("submit", function (event) {
             event.preventDefault();
