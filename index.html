@@ -16,73 +16,69 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            box-sizing: border-box;
         }
         h1 {
-            font-size: 10rem; /* 將標題字體放大五倍 */
-            margin: 0 0 20px 0; /* 頂部距離調整 */
-            text-align: left;
-        }
-        .divider-a {
-            border-top: 2px solid #FFFFFF;
-            margin: 20px 0;
-        }
-        .divider-b {
-            border-left: 2px solid #FFFFFF;
-            height: calc(100vh - 100px); /* 計算剩餘高度以適應頁面 */
-            position: absolute;
-            left: 50%;
-            top: 100px; /* 避免覆蓋分隔線A */
-            transform: translateX(-50%);
+            font-size: 10rem; /* 標題字體大小 */
+            margin: 0;
+            padding-left: 20px; /* 左邊距 */
         }
         .container {
             display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            height: calc(100vh - 150px); /* 留出上方和下方空間 */
+            flex-direction: column;
+            height: calc(100vh - 20px); /* 減去上面邊距 */
             position: relative;
         }
-        .left-column, .right-column {
+        .form-container {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            overflow: hidden;
+        }
+        .form-container .left, .form-container .right {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            width: 50%;
-            padding: 0 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container .left {
+            border-right: 2px solid #FFFFFF; /* B分隔線 */
         }
         .column-header {
             font-weight: bold;
-            font-size: 2rem; /* 調整標題字體大小，略大於項目 */
+            font-size: 5rem; /* "Before"和"After"字體大小 */
             margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
+            padding-left: 20px; /* 左邊距 */
         }
         .column {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            font-size: 2rem; /* 調整項目文字大小 */
-            font-weight: bold; /* 使用粗體 */
+            align-items: flex-start; /* 靠左對齊 */
+            font-size: 2rem; /* 項目文字大小 */
+            font-weight: bold;
         }
         label {
             margin-bottom: 5px;
         }
         input[type="number"] {
             padding: 5px;
-            font-size: 2rem; /* 調整輸入框字體大小 */
-            width: 80px; /* 調整寬度以適應兩位數字 */
+            font-size: 2rem; /* 輸入框字體大小 */
+            width: 80px; /* 寬度 */
             margin-bottom: 10px;
             text-align: center; /* 使輸入框文字置中 */
         }
         button {
-            font-size: 2rem; /* 調整按鈕字體大小 */
+            font-size: 2rem; /* 按鈕字體大小 */
             padding: 10px 20px;
             cursor: pointer;
-            background-color: #FFFFFF; /* 按鈕背景顏色：白色 */
-            color: #000000; /* 按鈕文字顏色：黑色 */
+            background-color: #FFFFFF; /* 按鈕背景顏色 */
+            color: #000000; /* 按鈕文字顏色 */
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            position: absolute;
-            top: 20px;
-            right: 20px;
         }
         button:hover {
             background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
@@ -90,49 +86,64 @@
         #result {
             font-size: 2rem;
             position: absolute;
-            top: 70px;
+            bottom: 20px;
             right: 20px;
+        }
+        .score-button-container {
+            position: absolute;
+            top: 20px; /* 距離頂部邊距 */
+            right: 20px;
+        }
+        .score-button-container button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .score-button-container .score {
+            font-size: 2rem;
         }
     </style>
 </head>
 <body>
     <h1>甲蟲增肌減脂大賽</h1>
-    <div class="divider-a"></div>
     <div class="container">
-        <div class="left-column">
-            <div class="column-header">Before</div>
-            <div class="column">
-                <label for="previousWeight">體重(kg)</label>
-                <input type="number" id="previousWeight" required>
+        <div class="form-container">
+            <div class="left">
+                <div class="column-header">Before</div>
+                <div class="column">
+                    <label for="previousWeight">體重(kg)</label>
+                    <input type="number" id="previousWeight" required>
+                </div>
+                <div class="column">
+                    <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
+                    <input type="number" id="previousMuscleMass" required>
+                </div>
+                <div class="column">
+                    <label for="previousBodyFatPercentage">體脂肪率(%)</label>
+                    <input type="number" id="previousBodyFatPercentage" required>
+                </div>
             </div>
-            <div class="column">
-                <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
-                <input type="number" id="previousMuscleMass" required>
-            </div>
-            <div class="column">
-                <label for="previousBodyFatPercentage">體脂肪率(%)</label>
-                <input type="number" id="previousBodyFatPercentage" required>
+            <div class="right">
+                <div class="column-header">After</div>
+                <div class="column">
+                    <label for="currentWeight">體重(kg)</label>
+                    <input type="number" id="currentWeight" required>
+                </div>
+                <div class="column">
+                    <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
+                    <input type="number" id="currentMuscleMass" required>
+                </div>
+                <div class="column">
+                    <label for="currentBodyFatPercentage">體脂肪率(%)</label>
+                    <input type="number" id="currentBodyFatPercentage" required>
+                </div>
             </div>
         </div>
-        <div class="divider-b"></div>
-        <div class="right-column">
-            <div class="column-header">After</div>
-            <div class="column">
-                <label for="currentWeight">體重(kg)</label>
-                <input type="number" id="currentWeight" required>
-            </div>
-            <div class="column">
-                <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
-                <input type="number" id="currentMuscleMass" required>
-            </div>
-            <div class="column">
-                <label for="currentBodyFatPercentage">體脂肪率(%)</label>
-                <input type="number" id="currentBodyFatPercentage" required>
-            </div>
+        <div class="score-button-container">
+            <button type="submit" form="scoreForm">填好了！</button>
+            <div id="result" class="score">Score: ___</div>
         </div>
     </div>
-    <button type="submit" form="scoreForm">填好了！</button>
-    <div id="result">您的分數是：0</div>
+
     <script>
         document.getElementById("scoreForm").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -152,7 +163,7 @@
 
             // 顯示結果
             const resultDiv = document.getElementById("result");
-            resultDiv.textContent = `您的分數是：${score}`;
+            resultDiv.textContent = `Score: ${score}`;
         });
     </script>
 </body>
