@@ -16,16 +16,18 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden; /* 避免滾動條 */
         }
         h1 {
             font-size: 10rem; /* 標題字體大小 */
             margin: 0;
             padding-left: 20px; /* 左邊距 */
+            position: relative;
         }
         .container {
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 20px); /* 減去上面邊距 */
+            height: calc(100vh - 10px); /* 減去上面邊距 */
             position: relative;
         }
         .form-container {
@@ -38,20 +40,24 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start; /* 靠上對齊 */
+            align-items: flex-start;
             padding: 20px;
+            box-sizing: border-box;
         }
         .form-container .left {
             border-right: 2px solid #FFFFFF; /* B分隔線 */
+            position: relative;
+        }
+        .form-container .right {
+            position: relative;
         }
         .column-header {
             font-weight: bold;
             font-size: 5rem; /* "Before"和"After"字體大小 */
             margin-bottom: 20px;
-            text-align: left;
             width: 100%;
-            padding-left: 20px; /* 左邊距 */
+            text-align: left;
         }
         .column {
             display: flex;
@@ -59,6 +65,7 @@
             align-items: flex-start; /* 靠左對齊 */
             font-size: 2rem; /* 項目文字大小 */
             font-weight: bold;
+            margin-bottom: 20px;
         }
         label {
             margin-bottom: 5px;
@@ -67,8 +74,8 @@
             padding: 5px;
             font-size: 2rem; /* 輸入框字體大小 */
             width: 80px; /* 寬度 */
-            margin-bottom: 10px;
             text-align: center; /* 使輸入框文字置中 */
+            margin-bottom: 10px;
         }
         button {
             font-size: 2rem; /* 按鈕字體大小 */
@@ -88,10 +95,11 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
+            margin: 0;
         }
         .score-button-container {
             position: absolute;
-            top: 20px; /* 距離頂部邊距 */
+            top: 10px; /* 距離頂部邊距 */
             right: 20px;
         }
         .score-button-container button {
@@ -101,10 +109,25 @@
         .score-button-container .score {
             font-size: 2rem;
         }
+        .separator-A {
+            border-top: 2px solid #FFFFFF;
+            width: 100%;
+            position: relative;
+            top: 10px; /* 距離標題下方的邊距 */
+        }
+        .separator-B {
+            border-left: 2px solid #FFFFFF;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
     <h1>甲蟲增肌減脂大賽</h1>
+    <div class="separator-A"></div>
     <div class="container">
         <div class="form-container">
             <div class="left">
@@ -137,6 +160,7 @@
                     <input type="number" id="currentBodyFatPercentage" required>
                 </div>
             </div>
+            <div class="separator-B"></div>
         </div>
         <div class="score-button-container">
             <button type="submit" form="scoreForm">填好了！</button>
