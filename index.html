@@ -123,6 +123,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            height: 100%; /* 確保垂直線滿足父容器高度 */
         }
     </style>
 </head>
@@ -164,7 +165,7 @@
             <div class="separator-B"></div>
         </div>
         <div class="score-button-container">
-            <button type="submit" id="submitButton">填好了！</button>
+            <button type="button" id="submitButton">填好了！</button>
             <div id="result" class="score">Score: ___</div>
         </div>
     </div>
@@ -186,7 +187,7 @@
 
             // 顯示結果
             const resultDiv = document.getElementById("result");
-            resultDiv.textContent = `Score: ${score}`;
+            resultDiv.textContent = `Score: ${score.toFixed(2)}`; // 顯示到小數點後兩位
         });
     </script>
 </body>
