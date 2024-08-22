@@ -8,51 +8,54 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            background-color: #000000; /* 背景顏色：黑色 */
+            color: #FFFFFF; /* 文字顏色：白色 */
             font-family: 'Noto Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000000; /* 背景顏色，可根據需要調整 */
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 20px;
         }
         h1 {
-            font-size: 25rem; /* 增加標題的字體大小 */
-            margin-bottom: 0px;
+            font-size: 10rem; /* 將標題字體放大五倍 */
+            margin: 0 0 50px 0; /* 頂部距離調整 */
             text-align: left;
         }
         form {
-            text-align: center;
+            text-align: left;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            width: 80%; /* 擴大表單寬度，使其佔據更多空間 */
+            width: 50%; /* 調整表單寬度 */
         }
         .column-header {
             font-weight: bold;
-            font-size: 1.5rem; /* 增加標題字體大小 */
-            text-align: center;
+            font-size: 2rem; /* 調整標題字體大小 */
+            text-align: left;
             margin-bottom: 20px;
         }
         .column {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            font-size: 1.2rem; /* 增加文字的字體大小 */
+            align-items: flex-start;
+            font-size: 2rem; /* 調整項目文字大小 */
+            font-weight: bold; /* 使用粗體 */
         }
         label {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         input[type="number"] {
-            padding: 10px;
-            font-size: 1.2rem;
-            width: 80%; /* 增加輸入框的寬度 */
+            padding: 5px;
+            font-size: 2rem; /* 調整輸入框字體大小 */
+            width: 80px; /* 調整寬度以適應兩位數字 */
             margin-bottom: 10px;
         }
         button {
-            font-size: 1.5rem;
+            font-size: 2rem; /* 調整按鈕字體大小 */
             padding: 10px 20px;
             cursor: pointer;
             background-color: #4CAF50; /* 按鈕背景顏色 */
@@ -60,12 +63,13 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #45a049; /* 按鈕懸停時顏色變化 */
         }
         #result {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-top: 20px;
         }
     </style>
@@ -73,8 +77,8 @@
 <body>
     <h1>請輸入數據</h1>
     <form id="scoreForm">
-        <div class="column-header">之前</div>
-        <div class="column-header">之後</div>
+        <div class="column-header">Before</div>
+        <div class="column-header">After</div>
 
         <div class="column">
             <label for="previousWeight">體重（KG）：</label>
@@ -103,9 +107,7 @@
             <input type="number" id="currentBodyFatPercentage" required>
         </div>
 
-        <div class="column-header" style="grid-column: span 2;">
-            <button type="submit">計算分數</button>
-        </div>
+        <button type="submit">計算分數</button>
     </form>
 
     <div id="result"></div>
