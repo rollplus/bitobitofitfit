@@ -33,7 +33,7 @@
         .container {
             display: flex;
             width: 100%;
-            height: calc(100vh - 100px); /* 留出標題和按鈕的空間 */
+            height: calc(100vh - 160px); /* 留出標題和按鈕的空間 */
             position: relative;
             overflow: hidden;
         }
@@ -43,7 +43,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            text-align: left;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -56,7 +56,7 @@
         }
         .column-header {
             font-weight: bold;
-            font-size: 2.5rem; /* 調整標題字體大小 */
+            font-size: 5rem; /* 將"Before"和"After"字體放大至兩倍 */
             text-align: left;
             margin-bottom: 20px;
             margin-top: 0;
@@ -90,7 +90,6 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
         }
         button:hover {
             background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
@@ -104,6 +103,7 @@
         #result {
             font-size: 2rem;
             margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
