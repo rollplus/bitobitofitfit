@@ -17,152 +17,139 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
+            overflow: hidden; /* 防止滾動條顯示 */
+        }
+        .header {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            border-bottom: 2px solid #FFFFFF; /* 分隔線 A */
         }
         h1 {
             font-size: 10rem; /* 將標題字體放大五倍 */
-            margin: 20px 0; /* 顶部和底部的间距 */
-            text-align: left;
-            width: 100%;
-            padding-left: 20px;
-        }
-        .divider-A {
-            width: 100%;
-            border-top: 2px solid #FFFFFF;
-            margin: 20px 0;
+            margin: 0;
         }
         .container {
             display: flex;
             width: 100%;
-            height: calc(100vh - 120px); /* 使內容區域填滿視窗，扣除標題和分隔線 */
-            align-items: center;
-            justify-content: center;
+            height: calc(100vh - 100px); /* 留出標題和按鈕的空間 */
             position: relative;
+            overflow: hidden;
         }
-        .divider-B {
-            height: 80%;
-            width: 2px;
-            background-color: #FFFFFF;
-            position: absolute;
-            top: 10%;
-        }
-        .form-container {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            gap: 20px;
-        }
-        .form-side {
+        .left, .right {
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 50%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        form {
-            text-align: center; /* 表单内项目置中 */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            width: 100%; /* 调整表单宽度 */
-            margin: 0 auto; /* 表单置中 */
+        .left {
+            border-right: 2px solid #FFFFFF; /* 分隔線 B */
+            position: relative;
+        }
+        .right {
+            position: relative;
         }
         .column-header {
             font-weight: bold;
-            font-size: 2.5rem; /* 调整标题字体大小，略大于项目 */
-            text-align: center;
+            font-size: 2.5rem; /* 調整標題字體大小 */
+            text-align: left;
             margin-bottom: 20px;
+            margin-top: 0;
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
         .column {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            font-size: 2rem; /* 调整项目文字大小 */
-            font-weight: bold; /* 使用粗体 */
+            align-items: flex-start;
+            font-size: 2rem; /* 調整項目文字大小 */
+            font-weight: bold; /* 使用粗體 */
         }
         label {
             margin-bottom: 5px;
         }
         input[type="number"] {
             padding: 5px;
-            font-size: 2rem; /* 调整输入框字体大小 */
-            width: 80px; /* 调整宽度以适应两位数字 */
+            font-size: 2rem; /* 調整輸入框字體大小 */
+            width: 80px; /* 調整寬度以適應兩位數字 */
             margin-bottom: 10px;
-            text-align: center; /* 使输入框文字置中 */
+            text-align: center; /* 使輸入框文字置中 */
         }
         button {
-            font-size: 1.5rem; /* 调整按钮字体大小 */
+            font-size: 2rem; /* 調整按鈕字體大小 */
             padding: 10px 20px;
             cursor: pointer;
-            background-color: #FFFFFF; /* 按钮背景颜色：白色 */
-            color: #000000; /* 按钮文字颜色：黑色 */
+            background-color: #FFFFFF; /* 按鈕背景顏色：白色 */
+            color: #000000; /* 按鈕文字顏色：黑色 */
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
             margin-top: 20px;
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
         }
         button:hover {
-            background-color: #e0e0e0; /* 按钮悬停时颜色变化 */
+            background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
+        }
+        .submit-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         #result {
             font-size: 2rem;
             margin-top: 20px;
-            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>甲蟲增肌減脂大賽</h1>
-    <div class="divider-A"></div>
+    <div class="header">
+        <h1>甲蟲增肌減脂大賽</h1>
+    </div>
     <div class="container">
-        <div class="divider-B"></div>
-        <div class="form-container">
-            <div class="form-side">
-                <div class="column-header">Before</div>
-                <form id="scoreForm">
-                    <div class="column">
-                        <label for="previousWeight">體重(kg)</label>
-                        <input type="number" id="previousWeight" required>
-                    </div>
-                    <div class="column">
-                        <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
-                        <input type="number" id="previousMuscleMass" required>
-                    </div>
-                    <div class="column">
-                        <label for="previousBodyFatPercentage">體脂肪率(%)</label>
-                        <input type="number" id="previousBodyFatPercentage" required>
-                    </div>
-                </form>
+        <div class="left">
+            <div class="column-header">Before</div>
+            <div class="column">
+                <label for="previousWeight">體重(kg)</label>
+                <input type="number" id="previousWeight" required>
             </div>
-            <div class="form-side">
-                <div class="column-header">After</div>
-                <form id="scoreForm">
-                    <div class="column">
-                        <label for="currentWeight">體重(kg)</label>
-                        <input type="number" id="currentWeight" required>
-                    </div>
-                    <div class="column">
-                        <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
-                        <input type="number" id="currentMuscleMass" required>
-                    </div>
-                    <div class="column">
-                        <label for="currentBodyFatPercentage">體脂肪率(%)</label>
-                        <input type="number" id="currentBodyFatPercentage" required>
-                    </div>
-                </form>
+            <div class="column">
+                <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
+                <input type="number" id="previousMuscleMass" required>
+            </div>
+            <div class="column">
+                <label for="previousBodyFatPercentage">體脂肪率(%)</label>
+                <input type="number" id="previousBodyFatPercentage" required>
+            </div>
+        </div>
+        <div class="right">
+            <div class="column-header">After</div>
+            <div class="column">
+                <label for="currentWeight">體重(kg)</label>
+                <input type="number" id="currentWeight" required>
+            </div>
+            <div class="column">
+                <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
+                <input type="number" id="currentMuscleMass" required>
+            </div>
+            <div class="column">
+                <label for="currentBodyFatPercentage">體脂肪率(%)</label>
+                <input type="number" id="currentBodyFatPercentage" required>
             </div>
         </div>
     </div>
-    <button type="submit">填好了！</button>
+    <div class="submit-container">
+        <button type="submit" onclick="calculateScore()">填好了！</button>
+    </div>
     <div id="result"></div>
 
     <script>
-        document.querySelector("button").addEventListener("click", function (event) {
-            event.preventDefault();
-
+        function calculateScore() {
             const previousMuscleMass = parseFloat(document.getElementById("previousMuscleMass").value);
             const previousWeight = parseFloat(document.getElementById("previousWeight").value);
             const previousBodyFatPercentage = parseFloat(document.getElementById("previousBodyFatPercentage").value);
@@ -179,7 +166,7 @@
             // 顯示結果
             const resultDiv = document.getElementById("result");
             resultDiv.textContent = `您的分數是：${score}`;
-        });
+        }
     </script>
 </body>
 </html>
