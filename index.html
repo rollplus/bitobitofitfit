@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>甲蟲增肌減脂營</title>
+    <title>甲蟲增肌減脂大賽</title>
     <!-- 引入Google Fonts的Noto Sans字體 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
     <style>
@@ -22,20 +22,31 @@
         }
         h1 {
             font-size: 10rem; /* 將標題字體放大五倍 */
-            margin: 0 0 50px 0; /* 頂部距離調整 */
+            margin: 0 0 10px 0; /* 頂部距離調整 */
             text-align: left;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #FFFFFF; /* 分隔線顏色：白色 */
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .divider-b {
+            border-top: 2px solid #FFFFFF; /* 分隔線B顏色：白色 */
+            width: 100%;
+            margin: 20px 0;
         }
         form {
             text-align: center; /* 表單內項目置中 */
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            width: 50%; /* 調整表單寬度 */
+            width: 100%; /* 調整表單寬度 */
             margin: 0 auto; /* 表單置中 */
         }
         .column-header {
             font-weight: bold;
-            font-size: 2.5rem; /* 調整標題字體大小，略大於項目 */
+            font-size: 3rem; /* 調整標題字體大小，略大於項目 */
             text-align: center;
             margin-bottom: 20px;
         }
@@ -66,6 +77,9 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             margin-top: 20px;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
         }
         button:hover {
             background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
@@ -77,11 +91,12 @@
     </style>
 </head>
 <body>
-    <h1>得分計算機</h1>
+    <h1>甲蟲增肌減脂大賽</h1>
+    <hr> <!-- 分隔線A -->
     <form id="scoreForm">
         <div class="column-header">Before</div>
         <div class="column-header">After</div>
-
+        <div class="divider-b"></div> <!-- 分隔線B -->
         <div class="column">
             <label for="previousWeight">體重(kg)</label>
             <input type="number" id="previousWeight" required>
@@ -92,26 +107,25 @@
         </div>
 
         <div class="column">
-            <label for="previousMuscleMass">骨骼肌肉重(kg)：</label>
+            <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
             <input type="number" id="previousMuscleMass" required>
         </div>
         <div class="column">
-            <label for="currentMuscleMass">骨骼肌肉重(kg)：</label>
+            <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
             <input type="number" id="currentMuscleMass" required>
         </div>
 
         <div class="column">
-            <label for="previousBodyFatPercentage">體脂肪率(%)：</label>
+            <label for="previousBodyFatPercentage">體脂肪率(%)</label>
             <input type="number" id="previousBodyFatPercentage" required>
         </div>
         <div class="column">
-            <label for="currentBodyFatPercentage">體脂肪率(%)：</label>
+            <label for="currentBodyFatPercentage">體脂肪率(%)</label>
             <input type="number" id="currentBodyFatPercentage" required>
         </div>
-
-        <button type="submit">填好了！</button>
     </form>
 
+    <button type="submit" form="scoreForm">填好了！</button>
     <div id="result"></div>
 
     <script>
