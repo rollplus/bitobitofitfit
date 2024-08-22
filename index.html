@@ -74,7 +74,7 @@
         input[type="number"] {
             padding: 5px;
             font-size: 2rem; /* 輸入框字體大小 */
-            width: 80px; /* 寬度 */
+            width: 120px; /* 寬度增加 */
             text-align: center; /* 使輸入框文字置中 */
             margin-bottom: 10px;
         }
@@ -92,24 +92,23 @@
             background-color: #e0e0e0; /* 按鈕懸停時顏色變化 */
         }
         #result {
-            font-size: 6rem; /* 放大分數 */
-            color: #FFFFFF; /* 文字顏色 */
-            position: fixed; /* 固定定位 */
-            bottom: 20px; /* 距離底部邊距 */
-            left: 20px; /* 距離左側邊距 */
+            font-size: 6rem; /* 調整分數字體大小 */
             margin: 0;
+            position: absolute;
+            bottom: 20px; /* 距離底部邊距 */
+            right: 20px; /* 距離右邊邊距 */
         }
         .score-button-container {
-            position: fixed;
-            bottom: 20px; /* 距離底部邊距 */
-            right: 20px; /* 距離右側邊距 */
+            position: absolute;
+            top: 20px; /* 距離頂部邊距 */
+            right: 20px;
             display: flex;
             flex-direction: column;
-            align-items: flex-end; /* 按鈕在右下角 */
+            align-items: flex-end;
         }
         .score-button-container button {
             display: block;
-            margin-bottom: 10px; /* 按鈕和分數之間的距離 */
+            margin-bottom: 10px;
         }
         .separator-A {
             border-top: 2px solid #FFFFFF;
@@ -137,37 +136,37 @@
                 <div class="column-header">Before</div>
                 <div class="column">
                     <label for="previousWeight">體重(kg)</label>
-                    <input type="number" id="previousWeight" required>
+                    <input type="number" id="previousWeight" step="0.01" required>
                 </div>
                 <div class="column">
                     <label for="previousMuscleMass">骨骼肌肉重(kg)</label>
-                    <input type="number" id="previousMuscleMass" required>
+                    <input type="number" id="previousMuscleMass" step="0.01" required>
                 </div>
                 <div class="column">
                     <label for="previousBodyFatPercentage">體脂肪率(%)</label>
-                    <input type="number" id="previousBodyFatPercentage" required>
+                    <input type="number" id="previousBodyFatPercentage" step="0.01" required>
                 </div>
             </div>
             <div class="right">
                 <div class="column-header">After</div>
                 <div class="column">
                     <label for="currentWeight">體重(kg)</label>
-                    <input type="number" id="currentWeight" required>
+                    <input type="number" id="currentWeight" step="0.01" required>
                 </div>
                 <div class="column">
                     <label for="currentMuscleMass">骨骼肌肉重(kg)</label>
-                    <input type="number" id="currentMuscleMass" required>
+                    <input type="number" id="currentMuscleMass" step="0.01" required>
                 </div>
                 <div class="column">
                     <label for="currentBodyFatPercentage">體脂肪率(%)</label>
-                    <input type="number" id="currentBodyFatPercentage" required>
+                    <input type="number" id="currentBodyFatPercentage" step="0.01" required>
                 </div>
             </div>
             <div class="separator-B"></div>
         </div>
         <div class="score-button-container">
+            <div id="result" class="score">Score:</div>
             <button type="button" id="submitButton">填好了！</button>
-            <div id="result">Score:</div> <!-- 分數顯示在右下角 -->
         </div>
     </div>
 
